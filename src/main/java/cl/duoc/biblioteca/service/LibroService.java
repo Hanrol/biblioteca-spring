@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.duoc.biblioteca.model.Libro;
-import repository.LibroRepository;
+import cl.duoc.biblioteca.repository.LibroRepository;
 
 @Service
 public class LibroService {

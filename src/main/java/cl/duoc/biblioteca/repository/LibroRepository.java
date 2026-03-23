@@ -1,4 +1,4 @@
-package repository;
+package cl.duoc.biblioteca.repository;
 
 import java.util.ArrayList;
 import java.util.List;
