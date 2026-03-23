@@ -10,7 +10,7 @@ import cl.duoc.biblioteca.model.Libro;
 @Repository
 public class LibroRepository {
 
-    private List<Libro> listaLibros = new ArrayList<>();
+    private final List<Libro> listaLibros = new ArrayList<>();
 
     public List<Libro> obtenerLibros() {
         return listaLibros;
