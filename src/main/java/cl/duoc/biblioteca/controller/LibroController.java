@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cl.duoc.biblioteca.model.Libro;
 import cl.duoc.biblioteca.service.LibroService;
+import jakarta.validation.Valid;
+
+
 
 
 @RestController
@@ -29,22 +32,57 @@ public class LibroController {
     }
 
     @PostMapping
-    public Libro agregarLibro(@RequestBody Libro libro) {
+    public Libro agregarLibro(@Valid @RequestBody Libro libro) {
         return libroService.saveLibro(libro);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}/id")
     public Libro buscarLibro(@PathVariable int id) {
         return libroService.getLibroId(id);
     }
 
+    @GetMapping("{isbn}/isbn")
+    public Libro buscarLibroIsbn(@PathVariable String isbn) {
+        return libroService.getLibroIsbn(isbn);
+    }
+
     @PutMapping("{id}")
-    public Libro actualizarLibro(@PathVariable int id, @RequestBody Libro libro) {
+    public Libro actualizarLibro(@PathVariable int id, @Valid @RequestBody Libro libro) {
         return libroService.updateLibro(libro);
     }
 
     @DeleteMapping("{id}")
     public String eliminarLibro(@PathVariable int id) {
         return libroService.deleteLibro(id);
+    }
+
+    @GetMapping("/total")
+    public int totalLibros() {
+        return libroService.totalLibros();
+    }
+
+    @GetMapping("{fechaPublicacion}/AñoPublicacion") 
+    public int anioPulicacion(@PathVariable int fechaPublicacion) {
+        return libroService.totalLibroYear(fechaPublicacion);
+    }
+    
+    @GetMapping("autor/{autor}")
+    public List<Libro> listarLibrosAutor(@PathVariable String autor) {
+        return libroService.getLibroAutor(autor);
+    }
+    
+    @GetMapping("/antiguo")
+    public Libro libroMasAntiguo() {
+        return libroService.getMasAntiguo();
+    }
+
+    @GetMapping("/nuevo")
+    public Libro libroMasNuevo() {
+        return libroService.getMasNuevo();
+    }
+
+    @GetMapping("/ordenados")
+    public List<Libro> listarOrdenados() {
+        return libroService.getLibrosOrdenados();
     }
 }
