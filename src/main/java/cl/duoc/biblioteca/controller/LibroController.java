@@ -17,8 +17,6 @@ import cl.duoc.biblioteca.service.LibroService;
 import jakarta.validation.Valid;
 
 
-
-
 @RestController
 @RequestMapping("api/v1/libros")
 public class LibroController {
